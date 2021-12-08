@@ -89,6 +89,9 @@ class MarianTranslator(Translator):
             except subprocess.CalledProcessError as grepexc:                                                                                                   
                 return grepexc.returncode, grepexc.output
 
+        # Unicode => Str
+        src = src.encode()
+
         # tokenize
         src_tokenized = self.tokenizer.tokenize(src) if dotok else src
 
